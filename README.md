@@ -1,7 +1,7 @@
 # TNJ-Desk
 ![Instagram post - 1](https://user-images.githubusercontent.com/50267658/122635614-2deaa880-d10f-11eb-8460-09d218f43b6a.png)
 
-Tritunggal Nusantara Jaya is an early start company that runs in civil construction.
+Tritunggal Nusantara Jaya is an early start company of general supplier 
 
 TNJ-Desk is a desktop app to manage mostly all data for the business flow in TNJ
 
