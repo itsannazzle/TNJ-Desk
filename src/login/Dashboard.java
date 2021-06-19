@@ -908,13 +908,13 @@ private DefaultCategoryDataset createDataset() {
     }   
    private void autochar(){
        DefaultPieDataset dataset = new DefaultPieDataset();
-        dataset.setValue("TV", new Double(20));
-        dataset.setValue("DVD", new Double(20));
-        dataset.setValue("Mobile phone", new Double(40));
-        dataset.setValue("Accessories", new Double(10));
+        dataset.setValue("Pasir", new Double(20));
+        dataset.setValue("Clay", new Double(20));
+        dataset.setValue("Batu bara", new Double(40));
+        dataset.setValue("Split", new Double(10));
         // create pir chart
         JFreeChart chart = ChartFactory.createPieChart3D(
-                "Product Sales", // chart title                   
+                "Penjualan Produk", // chart title                   
                 dataset, // data 
                 true, // include legend                   
                 true,
