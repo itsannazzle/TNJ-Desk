@@ -5,12 +5,15 @@
  */
 package login;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 /**
  *
@@ -24,6 +27,8 @@ public class Login extends javax.swing.JFrame {
     public Login() {
         initComponents();
         setLocationRelativeTo(null);
+        addPlaceHolder(jTextField1);
+        addPlaceHolder(jPasswordField1);
        
     }
     public Connection getConnection(){
@@ -76,6 +81,13 @@ public class Login extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
+        addWindowFocusListener(new java.awt.event.WindowFocusListener() {
+            public void windowGainedFocus(java.awt.event.WindowEvent evt) {
+                formWindowGainedFocus(evt);
+            }
+            public void windowLostFocus(java.awt.event.WindowEvent evt) {
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setPreferredSize(new java.awt.Dimension(800, 500));
@@ -88,14 +100,36 @@ public class Login extends javax.swing.JFrame {
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 360, 500));
 
         jTextField1.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
+        jTextField1.setForeground(new java.awt.Color(153, 153, 153));
+        jTextField1.setText("Enter username");
         jTextField1.setBorder(null);
+        jTextField1.setName(""); // NOI18N
         jTextField1.setOpaque(false);
+        jTextField1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextField1FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextField1FocusLost(evt);
+            }
+        });
         jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 150, 250, 30));
         jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 240, 250, 10));
 
         jPasswordField1.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
+        jPasswordField1.setText("Enter password");
         jPasswordField1.setBorder(null);
+        jPasswordField1.setEchoChar('\u0000');
+        jPasswordField1.setName(""); // NOI18N
         jPasswordField1.setOpaque(false);
+        jPasswordField1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jPasswordField1FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jPasswordField1FocusLost(evt);
+            }
+        });
         jPanel1.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 210, 250, 30));
         jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 180, 250, 10));
 
@@ -168,6 +202,54 @@ public class Login extends javax.swing.JFrame {
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
         System.exit(0);
     }//GEN-LAST:event_jLabel3MouseClicked
+
+    public void removePlaceHolder(JTextField textfield){
+        Font font = textfield.getFont();
+        font = font.deriveFont(Font.PLAIN | Font.BOLD);
+        textfield.setFont(font);
+        textfield.setForeground(Color.BLACK);
+    }
+    
+    public void addPlaceHolder(JTextField textfield){
+        Font font = textfield.getFont();
+        font = font.deriveFont(Font.PLAIN);
+        textfield.setFont(font);
+        textfield.setForeground(Color.GRAY);
+    }
+    private void jPasswordField1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPasswordField1FocusGained
+        if(jPasswordField1.getText().equals("Enter password")){
+        jPasswordField1.setText(null);
+        jPasswordField1.requestFocus();
+        jPasswordField1.setEchoChar('\u25cf');
+            removePlaceHolder(jPasswordField1);
+    }
+    }//GEN-LAST:event_jPasswordField1FocusGained
+
+    private void jTextField1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusGained
+        if(jTextField1.getText().equals("Enter username")){
+            jTextField1.setText(null);
+            jTextField1.requestFocus();
+            removePlaceHolder(jTextField1);
+        }
+    }//GEN-LAST:event_jTextField1FocusGained
+
+    private void jTextField1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusLost
+        if (jTextField1.getText().length()==0){
+            addPlaceHolder(jTextField1);
+            jTextField1.setText("Enter username");
+        }
+    }//GEN-LAST:event_jTextField1FocusLost
+
+    private void jPasswordField1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPasswordField1FocusLost
+        if (jPasswordField1.getText().length()==0){
+            addPlaceHolder(jPasswordField1);
+            jPasswordField1.setText("Password");
+        }
+    }//GEN-LAST:event_jPasswordField1FocusLost
+
+    private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
+        this.requestFocusInWindow();
+    }//GEN-LAST:event_formWindowGainedFocus
 
     /**
      * @param args the command line arguments
